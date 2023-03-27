@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemone -L",
-    "start": "ts-node ./src/index.ts",
+    "dev": "nodemon -L",
+    "start": "ts-node --esm ./src/index.ts",
     "compile": "tsc",
     "prod": "npm run compile && NODE_ENV=production node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,8 +16,12 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.5.0",
-    "graphql": "^16.6.0",
+    "dotenv-safe": "^8.2.0",
     "nodemon": "^2.0.22",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.30.0",
+    "sequelize-cli": "^6.6.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {

@@ -1,4 +1,7 @@
+import { POSTGRES_DBNAME, POSTGRES_PASSWORD, POSTGRES_USER } from "./constants";
+
 import { ApolloServer } from "@apollo/server";
+import { Sequelize } from "sequelize";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
 const typeDefs = `#graphql
@@ -38,12 +41,20 @@ const server = new ApolloServer({
   resolvers,
 });
 
-// Passing an ApolloServer instance to the `startStandaloneServer` function:
-//  1. creates an Express app
-//  2. installs your ApolloServer instance as middleware
-//  3. prepares your app to handle incoming requests
-const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
-});
+try {
+  // Passing an ApolloServer instance to the `startStandaloneServer` function:
+  //  1. creates an Express app
+  //  2. installs your ApolloServer instance as middleware
+  //  3. prepares your app to handle incoming requests
 
-console.log(`🚀  Server ready at: ${url}`);
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: 4000 },
+  });
+
+  const seq = new Sequelize(
+    `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost.com:5432/${POSTGRES_DBNAME}`
+  );
+  console.log("🚀 ~ file: index.ts:53 ~ seq:", seq);
+
+  console.log(`🚀  Server ready at: ${url}`);
+} catch (error) {}

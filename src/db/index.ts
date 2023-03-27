@@ -1,4 +1,11 @@
-import { Sequelize } from 'sequelize'
+import {
+  POSTGRES_DBNAME,
+  POSTGRES_PASSWORD,
+  POSTGRES_USER,
+} from "../constants";
 
-const sequelize = new Sequelize(`postgres://${}:${}@localhost.com:5432/blackboxdb`)
+import { Sequelize } from "sequelize";
 
+const sequelize = new Sequelize(
+  `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost.com:5432/${POSTGRES_DBNAME}`
+);

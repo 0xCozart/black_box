@@ -1,7 +1,4 @@
-import { POSTGRES_DBNAME, POSTGRES_PASSWORD, POSTGRES_USER } from "./constants";
-
 import { ApolloServer } from "@apollo/server";
-import { Sequelize } from "sequelize";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
 const typeDefs = `#graphql
@@ -50,11 +47,6 @@ try {
   const { url } = await startStandaloneServer(server, {
     listen: { port: 4000 },
   });
-
-  const seq = new Sequelize(
-    `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost.com:5432/${POSTGRES_DBNAME}`
-  );
-  console.log("🚀 ~ file: index.ts:53 ~ seq:", seq);
 
   console.log(`🚀  Server ready at: ${url}`);
 } catch (error) {}

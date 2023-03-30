@@ -6,6 +6,8 @@ import {
 
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize(
+const sequelize = new Sequelize(
   `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost.com:5432/${POSTGRES_DBNAME}`
 );
+
+export default sequelize;

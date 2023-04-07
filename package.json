@@ -23,7 +23,8 @@
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.30.0",
     "sequelize-typescript": "^2.1.5",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "uuid4": "^2.0.3"
   },
   "devDependencies": {
     "@types/node": "^18.15.10",

@@ -23,4 +23,6 @@ const User = db.define("User", {
   },
 });
 
+export type UserType = typeof User;
+
 export default User;
